@@ -1,10 +1,10 @@
 package main
 
-import "net/http"
+import (
+	"github.com/BernardN38/wasteland-exchange-server/app"
+)
 
 func main() {
-	// This is a placeholder for the main function.
-	http.ListenAndServe(":8080", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello, World! \n"))
-	}))
+	app := app.NewApp()
+	app.Listen()
 }
