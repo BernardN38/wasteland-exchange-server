@@ -1,0 +1,27 @@
+package service
+
+import "github.com/BernardN38/wasteland-exchange-server/game"
+
+type Service struct {
+	Game *game.Game
+}
+
+func NewService(game *game.Game) *Service {
+	return &Service{
+		Game: game,
+	}
+}
+
+func (s *Service) GetHealth() (string, error) {
+	return "Service is healthy", nil
+}
+
+func (s *Service) StartGame() (game.StartGameResponse, error) {
+	// Logic to start the game would go here
+	newGame, err := game.NewGame()
+	if err != nil {
+		return game.StartGameResponse{PlayerNames: []string{}}, err
+	}
+	s.Game = newGame
+	return game.StartGameResponse{PlayerNames: newGame.Players}, nil
+}
