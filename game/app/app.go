@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/BernardN38/wasteland-exchange-server/game"
 	"github.com/BernardN38/wasteland-exchange-server/router"
 	"github.com/BernardN38/wasteland-exchange-server/service"
 )
@@ -14,7 +15,11 @@ type App struct {
 }
 
 func NewApp() *App {
-	r := router.NewRouter(service.NewService())
+	g, err := game.NewGame()
+	if err != nil {
+		log.Fatalf("Failed to create game: %v", err)
+	}
+	r := router.NewRouter(service.NewService(g))
 	return &App{Router: r, Config: NewConfig()}
 }
 
