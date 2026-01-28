@@ -10,8 +10,9 @@ import (
 )
 
 type App struct {
-	Router *router.Router
-	Config Config
+	Service *service.Service
+	Router  *router.Router
+	Config  Config
 }
 
 func NewApp() *App {
@@ -19,8 +20,9 @@ func NewApp() *App {
 	if err != nil {
 		log.Fatalf("Failed to create game: %v", err)
 	}
-	r := router.NewRouter(service.NewService(g))
-	return &App{Router: r, Config: NewConfig()}
+	service := service.NewService(g)
+	r := router.NewRouter(service)
+	return &App{Service: service, Router: r, Config: NewConfig()}
 }
 
 func (a *App) Listen() error {
