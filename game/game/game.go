@@ -1,11 +1,11 @@
 package game
 
 type Game struct {
-	Players []string // List of player names
+	Players []Player // List of player names
 }
 
 func NewGame() (*Game, error) {
 	return &Game{
-		Players: []string{"player1", "player2"},
+		Players: []Player{{Name: "player1", Location: Location{X: 100, Y: 200}}, {Name: "player2", Location: Location{X: 150, Y: 250}}},
 	}, nil
 }

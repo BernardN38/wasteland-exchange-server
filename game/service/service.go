@@ -20,8 +20,8 @@ func (s *Service) StartGame() (game.StartGameResponse, error) {
 	// Logic to start the game would go here
 	newGame, err := game.NewGame()
 	if err != nil {
-		return game.StartGameResponse{PlayerNames: []string{}}, err
+		return game.StartGameResponse{Players: []game.Player{}}, err
 	}
 	s.Game = newGame
-	return game.StartGameResponse{PlayerNames: newGame.Players}, nil
+	return game.StartGameResponse{Players: newGame.Players}, nil
 }
