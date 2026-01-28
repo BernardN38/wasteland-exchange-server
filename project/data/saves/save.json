@@ -1,0 +1,26 @@
+{
+  "players": [
+    {
+      "name": "player1",
+      "location": {
+        "x": 100,
+        "y": 200
+      }
+    },
+    {
+      "name": "player2",
+      "location": {
+        "x": 150,
+        "y": 250
+      }
+    }
+  ],
+  "settlements": {
+    "settlement_alpha": {
+      "population": 1512
+    },
+    "settlement_beta": {
+      "population": 1412
+    }
+  }
+}
