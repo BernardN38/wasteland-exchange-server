@@ -6,5 +6,6 @@ import (
 
 func main() {
 	app := app.NewApp()
+	go app.Service.Game.RunGameLoop()
 	app.Listen()
 }

@@ -23,5 +23,5 @@ func (s *Service) StartGame() (game.StartGameResponse, error) {
 		return game.StartGameResponse{Players: []game.Player{}}, err
 	}
 	s.Game = newGame
-	return game.StartGameResponse{Players: newGame.Players}, nil
+	return game.StartGameResponse{Players: newGame.Players, Settlements: newGame.Settlements}, nil
 }

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "settlement_alpha",
+        "name": "Settlement Alpha",
+        "location": {
+            "x": 300,
+            "y": 400
+        },
+        "population": 200
+    },
+    {
+        "id": "settlement_beta",
+        "name": "Settlement Beta",
+        "location": {
+            "x": 500,
+            "y": 600
+        },
+        "population": 100
+    }
+]
