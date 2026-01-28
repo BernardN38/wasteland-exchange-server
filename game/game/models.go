@@ -1,5 +1,5 @@
 package game
 
 type StartGameResponse struct {
-	PlayerNames []string `json:"player_names"`
+	Players []Player `json:"players"`
 }
