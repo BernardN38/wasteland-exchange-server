@@ -18,7 +18,7 @@ func (s *Service) GetHealth() (string, error) {
 
 func (s *Service) StartGame() (game.StartGameResponse, error) {
 	// Logic to start the game would go here
-	newGame, err := game.NewGame()
+	newGame, err := game.LoadGame()
 	if err != nil {
 		return game.StartGameResponse{Players: []game.Player{}}, err
 	}

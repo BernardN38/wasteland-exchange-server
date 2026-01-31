@@ -3,6 +3,7 @@ package game
 type StartGameResponse struct {
 	Players     []Player      `json:"players"`
 	Settlements []*Settlement `json:"settlements"`
+	Game        Game          `json:"game"`
 }
 
 type PlayerSaveData struct {

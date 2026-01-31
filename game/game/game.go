@@ -27,19 +27,8 @@ func (game *Game) RunGameLoop() {
 		game.SaveGame()
 	}
 }
-func NewGame() (*Game, error) {
-	//debug load savefile
-	gameSave := GameSave{}
-	file, err := os.ReadFile("saves/save.json")
-	if err == nil {
-		log.Println("Save file found, loading game...")
-	}
-	json.Unmarshal(file, &gameSave)
-	if err == nil {
-		log.Println("Unmarshaled save file:")
-	}
-	log.Println("GameSave: ", gameSave)
 
+func NewGame() (*Game, error) {
 	settlements, err := loadDefaultSettlements()
 	if err != nil {
 		return nil, err
@@ -50,9 +39,10 @@ func NewGame() (*Game, error) {
 		Ticker:      *time.NewTicker(time.Millisecond * 100),
 	}, nil
 }
+
 func LoadGame() (*Game, error) {
 	saveData := GameSave{}
-	//load save data from saves/game_save.json
+	// load save data from saves/game_save.json
 	file, err := os.ReadFile("saves/save.json")
 	if err != nil {
 		return nil, err
@@ -87,7 +77,7 @@ func loadDefaultSettlements() ([]*Settlement, error) {
 
 func loadSavedSettlements(saveData *GameSave) ([]*Settlement, error) {
 	var settlements []*Settlement
-	//load default settlements from common/settlements.json
+	// load default settlements from common/settlements.json
 	defaultFile, err := os.ReadFile("common/settlements.json")
 	if err != nil {
 		return nil, err
@@ -97,7 +87,7 @@ func loadSavedSettlements(saveData *GameSave) ([]*Settlement, error) {
 		return nil, err
 	}
 
-	//apply save data
+	// apply save data
 	for _, settlement := range settlements {
 		savedData, exists := saveData.Settlements[settlement.ID]
 		if exists {

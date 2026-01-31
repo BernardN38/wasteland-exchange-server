@@ -3,7 +3,11 @@ package router
 import (
 	"encoding/json"
 	"net/http"
+
+	"github.com/gorilla/websocket"
 )
+
+var upgrader = websocket.Upgrader{}
 
 func (r *Router) SetupRoutes() {
 	r.Mux.Get("/api/v1/health", r.CheckHealth)
@@ -25,4 +29,8 @@ func (router *Router) StartNewGame(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(newGame)
+}
+
+func (router *Router) CreateWebSocket(w http.ResponseWriter, r *http.Request) {
+
 }
